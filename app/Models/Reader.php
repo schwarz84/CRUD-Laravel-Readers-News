@@ -14,10 +14,9 @@ class Reader extends Model
         'last_name'
     ];
 
-    public function news()
+    public function news(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(News::class, 'readers_news')
             ->withTimestamps();
-
     }
 }

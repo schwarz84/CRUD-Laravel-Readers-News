@@ -8,6 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+<div class="toast-container position-absolute top-0 end-0 p-3">
+    <div id="success-toast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+        </div>
+    </div>
+</div>
+
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -18,10 +27,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Lectores</a>
+                        <a class="nav-link" href="{{ route('readers.index') }}">Lectores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Noticias</a>
+                        <a class="nav-link" href="{{ route('news.index') }}">Noticias</a>
                     </li>
                 </ul>
             </div>
@@ -36,6 +45,19 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const successToast = new bootstrap.Toast(document.getElementById('success-toast'), {delay: 3000});
+
+        @if(session('success'))
+        successToast._element.querySelector('.toast-body').textContent = '{{ session('success') }}';
+        successToast.show();
+        setTimeout(function() {
+            successToast.hide();
+        }, 3000);
+        @endif
+    });
+</script>
 </body>
 </html>
-
