@@ -6,7 +6,10 @@
 
         <form action="{{ $reader ? route('readers.update', $reader->id) : route('readers.store') }}" method="POST">
             @csrf
-            @method('PUT')
+            @if($reader)
+                @method('PUT')
+            @endif
+
 
             <div class="form-group col-6 my-3">
                 <label for="name">Nombre</label>
@@ -30,13 +33,13 @@
 
             <div class="form-group my-3 col-6">
                 <label>Noticias:</label>
-                @foreach(App\Models\News::all() as $news)
+                @foreach($news as $newsItem)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="news[]" id="news-{{ $news->id }}" value="{{ $news->id }}"
-                               @if($reader && $reader->news->contains($news->id)) checked @endif
+                        <input class="form-check-input" type="checkbox" name="news[]" id="news-{{ $newsItem->id }}" value="{{ $newsItem->id }}"
+                               @if($reader && $reader->news->contains($newsItem->id)) checked @endif
                         >
-                        <label class="form-check-label" for="news-{{ $news->id }}">
-                            {{ $news->title }}
+                        <label class="form-check-label" for="news-{{ $newsItem->id }}">
+                            {{ $newsItem->title }}
                         </label>
                     </div>
                 @endforeach

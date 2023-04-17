@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReaderRequest;
+use App\Models\News;
 use App\Models\Reader;
 
 class ReaderController extends Controller
@@ -15,7 +16,8 @@ class ReaderController extends Controller
 
     public function create()
     {
-        return view('readers.create');
+        $news = News::all();
+        return view('readers.create', compact('news'));
     }
 
     public function store(ReaderRequest $request)
@@ -39,7 +41,8 @@ class ReaderController extends Controller
 
     public function edit(Reader $reader)
     {
-        return view('readers.edit', compact('reader'));
+        $news = News::all();
+        return view('readers.edit', compact(['reader', 'news']));
     }
 
     public function update(ReaderRequest $request, Reader $reader)
