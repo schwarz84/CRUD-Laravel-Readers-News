@@ -19,7 +19,7 @@
                         <td>{{ $reader->name }}</td>
                         <td>{{ $reader->last_name }}</td>
                         <td>
-                            <a href="{{ route('readers.show', $reader->id) }}" class="btn btn-primary">Ver Lectror</a>
+                            <a href="{{ route('readers.show', $reader->id) }}" class="btn btn-primary">Ver Lector</a>
                         </td>
                     </tr>
                 @endforeach

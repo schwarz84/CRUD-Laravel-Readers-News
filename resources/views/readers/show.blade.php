@@ -15,7 +15,7 @@
             </tr>
         </table>
 
-        <a href="{{ route('readers.index') }}" class="btn btn-secondary">Regresar</a>
+        <a href="{{ url()->previous() }}" class="btn btn-secondary">Regresar</a>
         <a href="{{ route('readers.showReadNews', $reader->id) }}" class="btn btn-info">Mis Noticias</a>
 
     </div>

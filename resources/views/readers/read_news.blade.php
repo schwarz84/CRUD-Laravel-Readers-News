@@ -10,6 +10,7 @@
                 <tr>
                     <th>Título</th>
                     <th>Autor</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -17,6 +18,7 @@
                     <tr>
                         <td>{{ $news->title }}</td>
                         <td>{{ $news->author }}</td>
+                        <td><a href="{{ route('news.show', $news->id) }}" class="btn btn-primary">Ver Noticia</a></td>
                     </tr>
                 @endforeach
                 </tbody>

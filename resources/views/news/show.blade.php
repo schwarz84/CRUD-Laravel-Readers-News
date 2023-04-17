@@ -11,6 +11,6 @@
         </div>
 
         <a href="{{ url()->previous() }}" class="btn btn-secondary">Volver</a>
-        <a href="{{ route('news.readers', $newsItem->id) }}" class="btn btn-info">Ver Lectores</a>
+        <a href="{{ route('news.readers', $news->id) }}" class="btn btn-info">Ver Lectores</a>
     </div>
 @endsection
