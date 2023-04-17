@@ -24,6 +24,7 @@ class ReaderRequest extends FormRequest
         return [
             'name' => 'required|regex:/^[\pL\s]+$/u|max:255',
             'last_name' => 'required|regex:/^[\pL\s]+$/u|max:255',
+            'news' => 'nullable|array',
         ];
     }
 
@@ -36,7 +37,6 @@ class ReaderRequest extends FormRequest
             'last_name.required' => 'EL campo apellido es obligatorio.',
             'last_name.regex' => 'El campo apellido solo permite caracteres alfabéticos.',
             'last_name.max' => 'El campo apellido supera la cantidad maxima permitida',
-
         ];
     }
 }

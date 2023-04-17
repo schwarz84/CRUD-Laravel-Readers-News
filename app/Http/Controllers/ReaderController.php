@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReaderRequest;
 use App\Models\Reader;
-use Illuminate\Http\Request;
 
 class ReaderController extends Controller
 {
@@ -23,7 +22,12 @@ class ReaderController extends Controller
     {
         $data = $request->validated();
 
-        Reader::create($data);
+        $reader = Reader::create($data);
+
+        if ($request->has('news')) {
+        $newsIds = $request->input('news');
+        $reader->news()->sync($newsIds);
+    }
 
         return redirect()->route('readers.index')->with('success', 'Lector creado exitosamente.');
     }
@@ -43,6 +47,11 @@ class ReaderController extends Controller
         $data = $request->validated();
 
         $reader->update($data);
+
+        if ($request->has('news')) {
+            $newsIds = $request->input('news');
+            $reader->news()->sync($newsIds);
+        }
 
         return redirect()->route('readers.index')->with('success', 'Lector actualizado exitosamente.');
     }
