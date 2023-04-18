@@ -1,0 +1,102 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CRUD de Noticias y Lectores",
+        "description": "Documentacion de API para Noticias y Lectores",
+        "contact": {
+            "email": "carlos@carlos"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/news/{id}/readers": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get news with readers",
+                "operationId": "93e1fac3cbf718ebdfd07ba2ad1f7646",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of news",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "News with readers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/News"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "News": {
+                "required": [
+                    "id",
+                    "title",
+                    "content",
+                    "author"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the news item",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Titulo de las Noticias",
+                        "type": "string"
+                    },
+                    "content": {
+                        "description": "Contenido de las noticias",
+                        "type": "text"
+                    },
+                    "author": {
+                        "description": "Autor de las noticias",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Error": {
+                "required": [
+                    "message"
+                ],
+                "properties": {
+                    "message": {
+                        "description": "Mensaje de error",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
