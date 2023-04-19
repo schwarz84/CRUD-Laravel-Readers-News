@@ -1,13 +1,14 @@
 Developing
 
-First time to contribute
+First time
 
 Clone this repo.
-$ composer install
-$ cp .env.example .env
-$ php artisan key:generate
+* composer install
+* cp .env.example .env
+* php artisan key:generate
 Config you environments variables in .env file.
-$ php artisan migrate
+* php artisan migrate
+* php artisan serve
 
 
 Testing
